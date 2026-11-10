@@ -1,0 +1,58 @@
+/**
+ * Data profil tim proyek SpaceX.
+ * Urutan sesuai struktur organisasi yang diminta:
+ * 1 Owner, 1 Direktur, 1 Asisten Direktur, 1 CEO, dan 2 Staf (wanita).
+ */
+export type TeamMember = {
+  name: string;
+  role: string;
+  description: string;
+  photo: string;
+  highlight?: boolean;
+};
+
+export const teamMembers: TeamMember[] = [
+  {
+    name: "Raka Aditya Pratama",
+    role: "Owner",
+    description:
+      "Pendiri sekaligus pemilik SpaceX. Bervisi menjadikan perjalanan ke Bulan sebagai pengalaman yang aman dan dapat dijangkau setiap orang.",
+    photo: "/team/owner.jpg",
+    highlight: true,
+  },
+  {
+    name: "Aditya Wicaksana",
+    role: "Direktur",
+    description:
+      "Memimpin seluruh operasional misi luar angkasa, mulai dari persiapan peluncuran hingga keselamatan penerbangan penumpang.",
+    photo: "/team/direktur.jpg",
+  },
+  {
+    name: "Fajar Alamsyah",
+    role: "Asisten Direktur",
+    description:
+      "Mendampingi direktur dalam koordinasi misi, logistik roket, serta pengaturan jadwal peluncuran harian.",
+    photo: "/team/asisten-direktur.jpg",
+  },
+  {
+    name: "M. Xentyors",
+    role: "CEO",
+    description:
+      "Chief Executive Officer yang mengarahkan strategi perusahaan dan memastikan setiap pelanggan mendapatkan pelayanan terbaik.",
+    photo: "/team/ceo.jpg",
+  },
+  {
+    name: "Alyssa Maharani",
+    role: "Staff Operasional Penerbangan",
+    description:
+      "Mengurus check-in penumpang, dokumen misi, dan memastikan seluruh kebutuhan pra-peluncuran terpenuhi.",
+    photo: "/team/staff-1.jpg",
+  },
+  {
+    name: "Nadia Kirana Putri",
+    role: "Staff Hubungan Pelanggan",
+    description:
+      "Siap membantu kebutuhan perjalanan Anda — dari pemilihan paket hingga pertanyaan menjelang hari keberangkatan.",
+    photo: "/team/staff-2.jpg",
+  },
+];
