@@ -162,10 +162,10 @@ git push -u origin main
 
 | Nama | Peran |
 | --- | --- |
-| Raka Aditya Pratama | Owner (Pendiri) |
-| Aditya Wicaksana | Direktur |
-| Fajar Alamsyah | Asisten Direktur |
-| M. Xentyors | CEO |
+| Maxentyo Raja S | Owner (Pendiri) |
+| R Adhitya | Direktur |
+| Firas Al Fatih | Asisten Direktur |
+| Muhammad Iqbal | CEO |
 | Alyssa Maharani | Staff Operasional Penerbangan |
 | Nadia Kirana Putri | Staff Hubungan Pelanggan |
 
