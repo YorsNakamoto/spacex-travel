@@ -148,24 +148,32 @@ export async function POST(request: NextRequest) {
     const totalPrice = rocket.price * data.passengers;
     const departureDateLabel = formatDateID(data.departureDate);
 
-    // 1) Simpan pemesanan ke database
-    const booking = await db.booking.create({
-      data: {
-        bookingCode,
-        fullName: data.fullName,
-        email: data.email,
-        phone: data.phone,
-        rocketModel: rocket.name,
-        departureDate: new Date(data.departureDate),
-        passengers: data.passengers,
-        notes: data.notes || null,
-        status: "PENDING",
-      },
-    });
+    // 1) Simpan pemesanan ke database (non-fatal: bila database tidak
+    //    tersedia, misal di lingkungan serverless, pemesanan tetap lanjut
+    //    dan email tetap dikirim)
+    let bookingId: string | null = null;
+    try {
+      const booking = await db.booking.create({
+        data: {
+          bookingCode,
+          fullName: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          rocketModel: rocket.name,
+          departureDate: new Date(data.departureDate),
+          passengers: data.passengers,
+          notes: data.notes || null,
+          status: "PENDING",
+        },
+      });
+      bookingId = booking.id;
+    } catch (dbError) {
+      console.warn("[/api/booking] Database tidak tersedia, lanjut tanpa menyimpan:", dbError);
+    }
 
     // 2) Kirim email otomatis ke ceomxentyors@gmail.com
     const emailResult = await sendBookingEmail({
-      bookingCode: booking.bookingCode,
+      bookingCode,
       fullName: data.fullName,
       email: data.email,
       phone: data.phone,
@@ -176,16 +184,20 @@ export async function POST(request: NextRequest) {
       totalPrice,
     });
 
-    if (emailResult.sent) {
-      await db.booking.update({
-        where: { id: booking.id },
-        data: { emailSent: true, status: "MENUNGGU_KONFIRMASI" },
-      });
+    if (emailResult.sent && bookingId) {
+      try {
+        await db.booking.update({
+          where: { id: bookingId },
+          data: { emailSent: true, status: "MENUNGGU_KONFIRMASI" },
+        });
+      } catch (dbError) {
+        console.warn("[/api/booking] Gagal memperbarui status email:", dbError);
+      }
     }
 
     return NextResponse.json({
       success: true,
-      bookingCode: booking.bookingCode,
+      bookingCode,
       rocketName: rocket.name,
       rocketId: rocket.id,
       priceLabel: rocket.priceLabel,

@@ -13,7 +13,7 @@ export type TeamMember = {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Raka Aditya Pratama",
+    name: "Maxentyo Raja S",
     role: "Owner",
     description:
       "Pendiri sekaligus pemilik SpaceX. Bervisi menjadikan perjalanan ke Bulan sebagai pengalaman yang aman dan dapat dijangkau setiap orang.",
@@ -21,21 +21,21 @@ export const teamMembers: TeamMember[] = [
     highlight: true,
   },
   {
-    name: "Aditya Wicaksana",
+    name: "R Adhitya",
     role: "Direktur",
     description:
       "Memimpin seluruh operasional misi luar angkasa, mulai dari persiapan peluncuran hingga keselamatan penerbangan penumpang.",
     photo: "/team/direktur.jpg",
   },
   {
-    name: "Fajar Alamsyah",
+    name: "Firas Al Fatih",
     role: "Asisten Direktur",
     description:
       "Mendampingi direktur dalam koordinasi misi, logistik roket, serta pengaturan jadwal peluncuran harian.",
     photo: "/team/asisten-direktur.jpg",
   },
   {
-    name: "M. Xentyors",
+    name: "Muhammad Iqbal",
     role: "CEO",
     description:
       "Chief Executive Officer yang mengarahkan strategi perusahaan dan memastikan setiap pelanggan mendapatkan pelayanan terbaik.",

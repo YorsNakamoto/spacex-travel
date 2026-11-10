@@ -50,6 +50,8 @@ test
 prompt
 
 server.log
+# Screenshot hasil uji visual Playwright
+test-artifacts/
 # Skills directory
 /skills/
 # === Tambahan proyek SpaceX ===
