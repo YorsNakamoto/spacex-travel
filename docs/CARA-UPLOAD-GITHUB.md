@@ -41,14 +41,32 @@ Personal access tokens → **Tokens (classic)** → Generate new token → centa
 
 ---
 
-## ⚠️ Penting: Aktifkan Email Pemesanan (sekali saja)
+## ⚠️ Penting: Konfigurasi Email Pemesanan (SMTP Gmail)
 
-Pemesanan otomatis dikirim ke **ceomxentyors@gmail.com** melalui layanan
-**FormSubmit** (gratis, tanpa password email). Saat pertama kali ada pemesanan:
+Setiap pemesanan mengirim **dua email** via SMTP Gmail (nodemailer):
 
-1. FormSubmit mengirim email konfirmasi ke `ceomxentyors@gmail.com`.
-2. Buka email tersebut dan klik tombol **Activate**.
-3. Selesai — semua pemesanan berikutnya masuk otomatis ke email tersebut.
+1. **Notifikasi ke perusahaan** → `ceomxentyors@gmail.com` (ada reply-to ke pembeli)
+2. **Bukti pemesanan ke pembeli** → email yang diisi customer di formulir
+
+Set 4 variabel environment di Vercel (**Project → Settings → Environment Variables**):
+
+| Variabel | Nilai |
+| --- | --- |
+| `SMTP_HOST` | `smtp.gmail.com` |
+| `SMTP_PORT` | `465` |
+| `SMTP_USER` | `ceomxentyors@gmail.com` |
+| `SMTP_PASS` | *App Password 16 karakter* (lihat langkah di bawah) |
+
+**Cara membuat App Password (sekali saja):**
+
+1. Aktifkan **2-Step Verification** di <https://myaccount.google.com/security>
+2. Buka <https://myaccount.google.com/apppasswords>
+3. Buat app password baru (nama bebas, cth: `SpaceX Website`)
+4. Salin **16 karakter** tanpa spasi ke `SMTP_PASS`
+5. Setelah 4 variabel diisi → **Redeploy** project di Vercel
+
+> Bila `SMTP_PASS` belum diisi, sistem otomatis memakai fallback FormSubmit
+> (notifikasi perusahaan saja, tanpa bukti ke pembeli).
 
 ## 📱 WhatsApp Admin
 

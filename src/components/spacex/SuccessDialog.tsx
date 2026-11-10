@@ -116,17 +116,21 @@ export function SuccessDialog() {
               <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
             )}
             <span>
-              {data.emailSent ? (
+              {data.emailSent && data.customerEmailSent ? (
+                <>
+                  Detail pemesanan terkirim ke <strong className="font-semibold">{siteConfig.email}</strong>{" "}
+                  dan bukti pemesanan dikirim ke email Anda. Simpan email tersebut sebagai
+                  bukti transaksi.
+                </>
+              ) : data.emailSent ? (
                 <>
                   Detail pemesanan otomatis terkirim ke{" "}
                   <strong className="font-semibold">{siteConfig.email}</strong>.
                 </>
               ) : (
                 <>
-                  Tersimpan di sistem kami. Email ke{" "}
-                  <strong className="font-semibold">{siteConfig.email}</strong> menunggu
-                  aktivasi kotak masuk (cukup buka email aktivisasi yang terkirim sekali).
-                  Sementara itu, konfirmasi via WhatsApp di bawah ini.
+                  Tersimpan di sistem kami dengan kode di atas. Untuk respons tercepat,
+                  konfirmasi via WhatsApp di bawah ini.
                 </>
               )}
             </span>

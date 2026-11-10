@@ -9,6 +9,7 @@ export type BookingSuccessData = {
   departureDate: string;
   passengers: number;
   emailSent: boolean;
+  customerEmailSent: boolean;
   emailMessage: string;
   customerName: string;
   customerPhone: string;

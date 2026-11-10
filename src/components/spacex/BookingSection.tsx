@@ -155,6 +155,7 @@ export function BookingSection() {
         departureDate: result.departureDate,
         passengers: result.passengers,
         emailSent: result.emailSent,
+        customerEmailSent: result.customerEmailSent === true,
         emailMessage: result.emailMessage,
         customerName: values.fullName,
         customerPhone: values.phone,
