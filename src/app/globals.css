@@ -466,6 +466,56 @@
   animation: live-dot 2s ease-out infinite;
 }
 
+/* Ikon menggambar diri (stroke-dash) — aktif saat kontainer diberi .draw-ready,
+   lalu .drawn memicu animasi. Tanpa JS / reduced-motion: ikon tampil normal. */
+.draw-ready .draw-icon svg path,
+.draw-ready .draw-icon svg circle,
+.draw-ready .draw-icon svg line,
+.draw-ready .draw-icon svg polyline,
+.draw-ready .draw-icon svg rect,
+.draw-ready .draw-icon svg ellipse {
+  stroke-dasharray: 64;
+  stroke-dashoffset: 64;
+}
+.draw-ready .draw-icon.drawn svg path,
+.draw-ready .draw-icon.drawn svg circle,
+.draw-ready .draw-icon.drawn svg line,
+.draw-ready .draw-icon.drawn svg polyline,
+.draw-ready .draw-icon.drawn svg rect,
+.draw-ready .draw-icon.drawn svg ellipse {
+  animation: draw-stroke 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--draw-delay, 0s);
+}
+@keyframes draw-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw-ready .draw-icon svg path,
+  .draw-ready .draw-icon svg circle,
+  .draw-ready .draw-icon svg line,
+  .draw-ready .draw-icon svg polyline,
+  .draw-ready .draw-icon svg rect,
+  .draw-ready .draw-icon svg ellipse {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  /* Titik berjalan SMIL pada garis Bumi→Bulan juga disembunyikan */
+  .animate-orbit-dot {
+    display: none;
+  }
+}
+
+/* Baris layanan editorial: baris lain meredup saat satu baris disorot */
+.service-list:hover .service-row:not(:hover):not(.service-open) {
+  opacity: 0.45;
+}
+.service-row {
+  transition: opacity 0.4s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

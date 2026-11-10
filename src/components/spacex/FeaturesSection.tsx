@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
 import { SectionHeading } from "./SectionHeading";
 import {
   Rocket,
@@ -51,51 +50,101 @@ const services = [
   },
 ] as const;
 
+/**
+ * Layanan — daftar editorial interaktif bernomor 01–06.
+ * Desktop: hover/tap melebar menampilkan deskripsi, garis aksen tumbuh,
+ * baris lain meredup (CSS .service-list). Mobile: perilaku accordion (tap).
+ * Konten & nomor urut tetap; tanpa dependency baru.
+ */
 export function FeaturesSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
     <section
       id="layanan"
       className="relative overflow-hidden py-24 sm:py-32"
       aria-label="Layanan SpaceX"
     >
-      {/* Pemisah lembut */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-
-      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
+      <div className="container-x">
         <SectionHeading
           eyebrow="Layanan Kami"
           title="Semua yang Anda butuhkan untuk sampai ke Bulan"
           description="Dari pelatihan hingga moonwalk — setiap detail perjalanan sudah kami siapkan dengan sempurna."
+          accentWord="Bulan"
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="service-list mt-16 border-t border-white/10">
           {services.map((service, i) => {
             const Icon = service.icon;
+            const num = String(i + 1).padStart(2, "0");
+            const open = openIndex === i;
             return (
-              <motion.div
+              <li
                 key={service.title}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: 0.08 * (i % 3) }}
+                className={`service-row border-b border-white/10 ${open ? "service-open" : ""}`}
               >
-                <Card className="group h-full rounded-2xl border-white/10 bg-white/[0.03] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white/[0.05] hover:shadow-[0_12px_40px_-16px_var(--primary)]">
-                  <CardContent className="flex h-full flex-col gap-4 p-6">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-primary/10 transition-colors group-hover:bg-primary/20">
-                      <Icon className="h-5.5 w-5.5 text-primary" aria-hidden="true" />
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(open ? null : i)}
+                  aria-expanded={open}
+                  className="group grid w-full grid-cols-[auto_1fr_auto] items-baseline gap-x-5 py-7 text-left sm:gap-x-8"
+                >
+                  {/* Nomor */}
+                  <span
+                    className={`font-hud tnum text-xs transition-colors duration-300 ${
+                      open ? "text-ice" : "text-muted-foreground/60"
+                    }`}
+                  >
+                    {num}
+                  </span>
+
+                  {/* Judul + deskripsi expandable */}
+                  <span className="flex min-w-0 flex-col">
+                    <span
+                      className={`font-heading text-xl font-semibold tracking-tight transition-colors duration-300 sm:text-3xl ${
+                        open ? "text-foreground" : "text-foreground/85"
+                      }`}
+                    >
+                      {service.title}
                     </span>
-                    <div className="space-y-1.5">
-                      <h3 className="font-heading font-semibold">{service.title}</h3>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {service.description}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                    <span
+                      className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <span className="overflow-hidden">
+                        <span className="block max-w-xl pt-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
+                          {service.description}
+                        </span>
+                      </span>
+                    </span>
+                    {/* Garis aksen tumbuh */}
+                    <span
+                      aria-hidden="true"
+                      className={`mt-4 block h-px origin-left bg-gradient-to-r from-ice to-transparent transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        open ? "scale-x-100" : "scale-x-0"
+                      }`}
+                    />
+                  </span>
+
+                  {/* Ikon */}
+                  <span
+                    className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-500 ${
+                      open
+                        ? "rotate-0 border-ice/40 bg-ice/10 text-ice"
+                        : "border-white/10 bg-white/[0.03] text-muted-foreground group-hover:border-ice/30 group-hover:text-ice"
+                    }`}
+                  >
+                    <Icon
+                      className={`h-5 w-5 transition-transform duration-500 ${open ? "scale-110" : ""}`}
+                      aria-hidden="true"
+                    />
+                  </span>
+                </button>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
     </section>
   );
