@@ -1,17 +1,27 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Sora, Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const spaceGrotesk = Space_Grotesk({
+/** Heading — geometris modern, wibawa premium. */
+const sora = Sora({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
+/** Body — keterbacaan maksimal untuk paragraf & formulir. */
 const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
+});
+
+/** Aksen editorial — italic serif untuk satu kata kunci per heading (mis. "Bulan"). */
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-accent",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["italic"],
 });
 
 export const metadata: Metadata = {
@@ -45,11 +55,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  /**
+   * Keputusan intro sebelum paint pertama (anti-flash):
+   * - putar bila belum pernah diputar sesi ini DAN hash kosong / #beranda
+   * - selain itu: sembunyikan overlay (intro-skip)
+   * "spx:intro-*" events & sessionStorage dibaca IntroOverlay.
+   */
+  const introBootstrap = `(function(){try{var h=location.hash;var ok=(h===""||h==="#beranda");var played=false;try{played=sessionStorage.getItem("spx-intro")==="1"}catch(e){}var d=document.documentElement;if(!ok||played){d.classList.add("intro-skip")}else{d.classList.add("intro-pending")}}catch(e){}})();`;
+
   return (
     <html lang="id" className="dark" suppressHydrationWarning>
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} font-body antialiased bg-background text-foreground`}
+        className={`${sora.variable} ${inter.variable} ${instrumentSerif.variable} font-body antialiased bg-background text-foreground`}
       >
+        <script dangerouslySetInnerHTML={{ __html: introBootstrap }} />
         {children}
         <Toaster />
       </body>

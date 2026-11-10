@@ -61,7 +61,7 @@ const bookingFormSchema = z.object({
       (v) => new Date(v).getTime() > Date.now() - 86_400_000,
       "Tanggal keberangkatan minimal hari ini"
     ),
-  passengers: z.string().default("1"),
+  passengers: z.string(),
   notes: z.string().trim().max(500, "Catatan maksimal 500 karakter").optional().or(z.literal("")),
 });
 

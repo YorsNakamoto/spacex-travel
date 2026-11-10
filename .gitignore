@@ -69,3 +69,4 @@ Caddyfile
 
 # Kecualikan .env.example agar tetap terkomit
 !.env.example
+quick-shot.mjs

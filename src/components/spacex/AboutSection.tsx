@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "./SectionHeading";
 import { Starfield } from "./Starfield";
-import { siteConfig } from "@/config/site";
+import { siteConfig, formatIDNumber } from "@/config/site";
 import { ShieldCheck, Clock, Users, HeartHandshake } from "lucide-react";
 
 const values = [
@@ -12,7 +12,7 @@ const values = [
     icon: ShieldCheck,
     title: "Keselamatan Terjamin",
     description:
-      "Setiap roket melewati 214 tahap pemeriksaan sebelum dinyatakan siap meluncur. Keselamatan penumpang adalah hal nomor satu bagi kami.",
+      `Setiap roket melewati ${siteConfig.stats.systemChecks} tahap pemeriksaan sebelum dinyatakan siap meluncur. Keselamatan penumpang adalah hal nomor satu bagi kami.`,
   },
   {
     icon: Clock,
@@ -34,12 +34,13 @@ const values = [
   },
 ] as const;
 
+/** Statistik dari satu sumber data: siteConfig.stats. */
 const stats = [
   { value: `${new Date().getFullYear() - siteConfig.foundedYear}+`, label: "Tahun Beroperasi" },
-  { value: "12", label: "Misi Berhasil" },
-  { value: "384.400 km", label: "Jarak Ditempuh per Misi" },
-  { value: "0", label: "Insiden Keselamatan" },
-] as const;
+  { value: `${siteConfig.stats.missions}`, label: "Misi Berhasil" },
+  { value: `${formatIDNumber(siteConfig.stats.distanceKm)} km`, label: "Jarak Ditempuh per Misi" },
+  { value: `${siteConfig.stats.incidents}`, label: "Insiden Keselamatan" },
+];
 
 export function AboutSection() {
   return (

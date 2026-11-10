@@ -40,55 +40,70 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  /* Warna khusus tema SpaceX */
+  --radius-xl: calc(var(--radius) + 8px);
+  /* Token warna tema "Luxury Aerospace" */
   --color-star: var(--star);
+  --color-ice: var(--ice);
+  --color-ice-deep: var(--ice-deep);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
+  --color-success: var(--success);
 }
 
 /*
- * TEMA SPACEX — "Minimalist Deep Space"
- * Latar hitam pekat bercita rasa langit malam, aksen ungu lembut (nebula)
- * dan emas untuk paket VIP. Situs dipaksa mode gelap untuk pengalaman space.
+ * TEMA SPACEX — "Luxury Aerospace: Earth to Moon Journey"
+ * Latar deep-space navy (#05070D → #111A2E), teks putih dingin (#F4F6FA / #AEB7C7),
+ * aksen Z1150 ice-blue (#7DD3FC), aksen Special 000 champagne-gold (#E8C27A → #C99A3B).
+ * Situs dipaksa mode gelap — kesan mewah, tenang, terpercaya.
  */
 :root,
 .dark {
-  --radius: 0.75rem;
-  --background: oklch(0.13 0.02 285); /* #0a0a14 hampir hitam beraroma ungu */
-  --foreground: oklch(0.96 0.01 280);
-  --card: oklch(0.17 0.025 285);
-  --card-foreground: oklch(0.96 0.01 280);
-  --popover: oklch(0.16 0.025 285);
-  --popover-foreground: oklch(0.96 0.01 280);
-  --primary: oklch(0.71 0.16 295); /* ungu lembut #a78bfa */
-  --primary-foreground: oklch(0.14 0.02 285);
-  --secondary: oklch(0.22 0.03 285);
-  --secondary-foreground: oklch(0.93 0.01 280);
-  --muted: oklch(0.21 0.025 285);
-  --muted-foreground: oklch(0.68 0.02 285);
-  --accent: oklch(0.24 0.04 290);
-  --accent-foreground: oklch(0.96 0.01 280);
-  --destructive: oklch(0.63 0.2 25);
-  --border: oklch(0.96 0.01 280 / 12%);
-  --input: oklch(0.96 0.01 280 / 14%);
-  --ring: oklch(0.71 0.16 295);
-  --chart-1: oklch(0.71 0.16 295);
-  --chart-2: oklch(0.8 0.16 85);
-  --chart-3: oklch(0.55 0.12 300);
-  --chart-4: oklch(0.65 0.05 280);
-  --chart-5: oklch(0.6 0.24 16);
-  --sidebar: oklch(0.16 0.025 285);
-  --sidebar-foreground: oklch(0.96 0.01 280);
-  --sidebar-primary: oklch(0.71 0.16 295);
-  --sidebar-primary-foreground: oklch(0.14 0.02 285);
-  --sidebar-accent: oklch(0.22 0.03 285);
-  --sidebar-accent-foreground: oklch(0.96 0.01 280);
-  --sidebar-border: oklch(0.96 0.01 280 / 12%);
-  --sidebar-ring: oklch(0.71 0.16 295);
-  --star: oklch(0.96 0.01 280 / 85%);
-  --gold: oklch(0.78 0.15 85); /* #eab308 lembut */
-  --gold-light: oklch(0.85 0.12 90);
+  --radius: 1rem; /* 16px; radius-xl = 24px */
+  --background: #05070d;
+  --foreground: #f4f6fa;
+  --card: #0a0f1c;
+  --card-foreground: #f4f6fa;
+  --popover: #0a0f1c;
+  --popover-foreground: #f4f6fa;
+  --primary: #7dd3fc; /* ice-blue — aksen Z1150 & UI umum */
+  --primary-foreground: #05070d;
+  --secondary: #111a2e;
+  --secondary-foreground: #e7ecf5;
+  --muted: #111a2e;
+  --muted-foreground: #aeb7c7;
+  --accent: #16223a;
+  --accent-foreground: #f4f6fa;
+  --destructive: #f87171;
+  --border: rgba(255, 255, 255, 0.08); /* hairline */
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #7dd3fc;
+  --chart-1: #7dd3fc;
+  --chart-2: #e8c27a;
+  --chart-3: #38bdf8;
+  --chart-4: #94a3b8;
+  --chart-5: #c99a3b;
+  --sidebar: #0a0f1c;
+  --sidebar-foreground: #f4f6fa;
+  --sidebar-primary: #7dd3fc;
+  --sidebar-primary-foreground: #05070d;
+  --sidebar-accent: #16223a;
+  --sidebar-accent-foreground: #f4f6fa;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #7dd3fc;
+  --star: #eaf2ff;
+  --ice: #7dd3fc;
+  --ice-deep: #38bdf8;
+  --gold: #c99a3b; /* gold-deep — border/beam Special 000 */
+  --gold-light: #e8c27a; /* champagne — teks/aksen Special 000 */
+  --success: #4ade80;
+  /* Token turunan */
+  --surface-1: #0a0f1c;
+  --surface-2: #111a2e;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.04);
+  /** Aksen aktif form/hero — berganti halus mengikuti model roket terpilih (Fase 6). */
+  --accent-active: var(--ice);
+  --accent-active-soft: rgba(125, 211, 252, 0.14);
 }
 
 @layer base {
@@ -97,31 +112,43 @@
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem; /* ruang untuk navbar fixed */
+    scroll-padding-top: 5.5rem; /* ruang untuk navbar fixed */
+  }
+  /* Bila Lenis aktif, serahkan easing scroll ke JS */
+  html.lenis-active {
+    scroll-behavior: auto;
+  }
+  /* Intro: keputusan pra-hidrasi */
+  html.intro-pending body {
+    overflow: hidden; /* scroll terkunci selama intro */
+  }
+  html.intro-skip [data-intro-overlay] {
+    display: none;
   }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body), system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: oklch(0.71 0.16 295 / 35%);
-    color: oklch(0.98 0.01 280);
+    background: rgba(125, 211, 252, 0.32);
+    color: #f8fafc;
   }
-  /* Scrollbar rinci bertema space */
+  /* Scrollbar rinci bertema aerospace */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: oklch(0.13 0.02 285);
+    background: #05070d;
   }
   ::-webkit-scrollbar-thumb {
-    background: oklch(0.35 0.05 290);
+    background: #1c2740;
     border-radius: 8px;
-    border: 2px solid oklch(0.13 0.02 285);
+    border: 2px solid #05070d;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.55 0.1 295);
+    background: #2c3b5c;
   }
 }
 
@@ -129,22 +156,86 @@
   .font-heading {
     font-family: var(--font-heading), var(--font-body), sans-serif;
   }
+  /* Aksen editorial: satu kata kunci per heading (mis. "Bulan") */
+  .font-accent {
+    font-family: var(--font-accent), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  /* Label & HUD: mono uppercase tracking lebar */
+  .font-hud {
+    font-family: var(--font-mono-stack);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+  /* Angka rapi sejajar untuk statistik & countdown */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+  /* Wadah utama 12 kolom, maks ±1280px */
+  .container-x {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1280px;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-x {
+      padding-inline: 1.5rem;
+    }
+  }
   /* Efek kaca buram untuk navbar & kartu */
   .glass {
-    background: oklch(0.16 0.025 285 / 55%);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(10, 15, 28, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--hairline);
+    border-radius: calc(var(--radius) + 4px);
   }
   .text-glow {
     text-shadow:
-      0 0 18px oklch(0.71 0.16 295 / 55%),
-      0 0 60px oklch(0.71 0.16 295 / 30%);
+      0 0 18px rgba(125, 211, 252, 0.5),
+      0 0 60px rgba(125, 211, 252, 0.25);
   }
   .gold-glow {
     text-shadow:
-      0 0 18px oklch(0.78 0.15 85 / 45%),
-      0 0 60px oklch(0.78 0.15 85 / 25%);
+      0 0 18px rgba(232, 194, 122, 0.45),
+      0 0 60px rgba(201, 154, 59, 0.25);
   }
+  /* Kilau perlahan untuk teks aksen serif (Fase 4: kata "Bulan") */
+  .text-shimmer {
+    background: linear-gradient(
+      100deg,
+      #e8c27a 0%,
+      #f6f0e4 30%,
+      #e8c27a 55%,
+      #b9c9dd 80%,
+      #e8c27a 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-slide 7s ease-in-out infinite;
+  }
+}
+
+/* Grain statis 3–5% untuk kesan premium (di atas konten, di bawah navbar) */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.05;
+}
+
+:root {
+  --font-mono-stack: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", monospace;
 }
 
 /* ============ ANIMASI TEMA ANGKASA ============ */
@@ -203,18 +294,45 @@
   animation: float-y 6s ease-in-out infinite;
 }
 
+/* Bulan melayang sangat pelan (hero) */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-float-slow {
+  animation: float-slow 11s ease-in-out infinite;
+}
+
+/* Garis bergerak pada indikator gulir */
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(34px);
+  }
+}
+.animate-scroll-line {
+  animation: scroll-line 1.8s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
 /* Bulan bercahaya lembut */
 @keyframes moon-glow {
   0%,
   100% {
     box-shadow:
-      0 0 60px 12px oklch(0.9 0.02 280 / 14%),
-      0 0 140px 50px oklch(0.75 0.03 280 / 10%);
+      0 0 60px 12px rgba(226, 234, 248, 0.13),
+      0 0 140px 50px rgba(174, 196, 228, 0.1);
   }
   50% {
     box-shadow:
-      0 0 80px 20px oklch(0.9 0.02 280 / 18%),
-      0 0 180px 70px oklch(0.75 0.03 280 / 12%);
+      0 0 80px 20px rgba(226, 234, 248, 0.18),
+      0 0 180px 70px rgba(174, 196, 228, 0.13);
   }
 }
 .animate-moon-glow {
@@ -285,10 +403,10 @@
 @keyframes soft-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 oklch(0.75 0.17 155 / 45%);
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 12px oklch(0.75 0.17 155 / 0%);
+    box-shadow: 0 0 0 12px rgba(74, 222, 128, 0);
   }
 }
 .animate-soft-pulse {
@@ -308,7 +426,7 @@
   animation: spin-slow 24s linear infinite;
 }
 
-/* Garis progres opening */
+/* Garis progres opening (legacy — dipakai IntroOverlay lama) */
 @keyframes progress-fill {
   from {
     width: 0%;
@@ -319,6 +437,33 @@
 }
 .animate-progress {
   animation: progress-fill 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Geseran kilau lembut untuk .text-shimmer */
+@keyframes shimmer-slide {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Titik "live" berdenyut (Fase 4: eyebrow T-minus) */
+@keyframes live-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5);
+    opacity: 1;
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(74, 222, 128, 0);
+    opacity: 0.75;
+  }
+}
+.animate-live-dot {
+  animation: live-dot 2s ease-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

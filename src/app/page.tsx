@@ -1,4 +1,8 @@
 import { IntroOverlay } from "@/components/spacex/IntroOverlay";
+import { GrainOverlay } from "@/components/spacex/primitives/GrainOverlay";
+import { SmoothScroll } from "@/components/spacex/anim";
+import { AtmosphereLayer } from "@/components/spacex/AtmosphereLayer";
+import { MissionHUD } from "@/components/spacex/MissionHUD";
 import { Navbar } from "@/components/spacex/Navbar";
 import { HeroSection } from "@/components/spacex/HeroSection";
 import { AboutSection } from "@/components/spacex/AboutSection";
@@ -17,11 +21,23 @@ export default function Home() {
       {/* Latar gradasi angkasa global */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-[-1] bg-[radial-gradient(140%_100%_at_50%_-20%,oklch(0.22_0.07_290/0.5),transparent_55%),radial-gradient(100%_80%_at_85%_110%,oklch(0.2_0.05_300/0.35),transparent_60%)]"
+        className="pointer-events-none fixed inset-0 z-[-1] bg-[radial-gradient(140%_100%_at_50%_-20%,rgba(17,26,46,0.9),transparent_55%),radial-gradient(100%_80%_at_85%_110%,rgba(10,15,28,0.8),transparent_60%)]"
       />
 
       {/* Transisi pembuka website */}
       <IntroOverlay />
+
+      {/* Grain statis untuk kesan premium */}
+      <GrainOverlay />
+
+      {/* Smooth scroll Lenis + sinkronisasi ScrollTrigger */}
+      <SmoothScroll />
+
+      {/* Atmosfer berganti per section (peluncuran → … → pendaratan) */}
+      <AtmosphereLayer />
+
+      {/* Mission HUD: progres perjalanan Bumi → Bulan */}
+      <MissionHUD />
 
       {/* Navbar menempel di atas header */}
       <Navbar />
