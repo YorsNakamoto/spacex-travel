@@ -14,6 +14,7 @@ export function RadioCard({
   ariaLabel,
   className,
   disabled,
+  radioId,
 }: {
   checked: boolean;
   onChange: (next: boolean) => void;
@@ -23,6 +24,8 @@ export function RadioCard({
   ariaLabel: string;
   className?: string;
   disabled?: boolean;
+  /** ID untuk penargetan animasi dari luar (mis. flash saat "Pesan Model Ini"). */
+  radioId?: string;
 }) {
   const isGold = accent === "gold";
   return (
@@ -32,6 +35,7 @@ export function RadioCard({
       aria-checked={checked}
       aria-label={ariaLabel}
       disabled={disabled}
+      data-radio-id={radioId}
       onClick={() => onChange(!checked)}
       className={cn(
         "group relative w-full rounded-2xl border p-4 text-left transition-all duration-300",

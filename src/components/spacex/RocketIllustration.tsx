@@ -23,15 +23,15 @@ export function RocketIllustration({
     // Roket putih keunguan — SpaceX Z1150
     z1150: {
       body: "url(#bodyZ1150)",
-      bodyStroke: "#c4b5fd",
-      nose: "#a78bfa",
-      window: "#151528",
-      windowRing: "#a78bfa",
-      fin: "#8b5cf6",
-      nozzle: "#3f3f5c",
-      flameOuter: "#f97316",
-      flameMid: "#fbbf24",
-      flameCore: "#fef3c7",
+      bodyStroke: "#9fd8f7",
+      nose: "#38bdf8",
+      window: "#0c1526",
+      windowRing: "#7dd3fc",
+      fin: "#38bdf8",
+      nozzle: "#24344d",
+      flameOuter: "#38bdf8",
+      flameMid: "#7dd3fc",
+      flameCore: "#eaf6ff",
     },
     // Roket hitam beraksen emas — SpaceX Special 000
     special000: {
@@ -50,14 +50,14 @@ export function RocketIllustration({
     hero: {
       body: "url(#bodyHero)",
       bodyStroke: "#e2e2f5",
-      nose: "#a78bfa",
-      window: "#151528",
-      windowRing: "#a78bfa",
-      fin: "#8b5cf6",
-      nozzle: "#3f3f5c",
-      flameOuter: "#f97316",
-      flameMid: "#fbbf24",
-      flameCore: "#fef3c7",
+      nose: "#7dd3fc",
+      window: "#0c1526",
+      windowRing: "#7dd3fc",
+      fin: "#38bdf8",
+      nozzle: "#24344d",
+      flameOuter: "#38bdf8",
+      flameMid: "#7dd3fc",
+      flameCore: "#eaf6ff",
     },
   } as const;
 
@@ -74,9 +74,9 @@ export function RocketIllustration({
     >
       <defs>
         <linearGradient id="bodyZ1150" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#e6e6f7" />
+          <stop offset="0" stopColor="#dcecf8" />
           <stop offset="0.5" stopColor="#ffffff" />
-          <stop offset="1" stopColor="#cfcfee" />
+          <stop offset="1" stopColor="#b9d4ea" />
         </linearGradient>
         <linearGradient id="bodyS000" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#1c1c2e" />
@@ -84,9 +84,9 @@ export function RocketIllustration({
           <stop offset="1" stopColor="#14141f" />
         </linearGradient>
         <linearGradient id="bodyHero" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#dcdcf0" />
+          <stop offset="0" stopColor="#d6e6f5" />
           <stop offset="0.5" stopColor="#ffffff" />
-          <stop offset="1" stopColor="#c9c9e8" />
+          <stop offset="1" stopColor="#b3cfe8" />
         </linearGradient>
         <linearGradient id={flameId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor={p.flameOuter} />

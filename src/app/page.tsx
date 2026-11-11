@@ -3,6 +3,7 @@ import { GrainOverlay } from "@/components/spacex/primitives/GrainOverlay";
 import { SmoothScroll } from "@/components/spacex/anim";
 import { AtmosphereLayer } from "@/components/spacex/AtmosphereLayer";
 import { MissionHUD } from "@/components/spacex/MissionHUD";
+import { Marquee } from "@/components/spacex/Marquee";
 import { Navbar } from "@/components/spacex/Navbar";
 import { HeroSection } from "@/components/spacex/HeroSection";
 import { AboutSection } from "@/components/spacex/AboutSection";
@@ -44,10 +45,13 @@ export default function Home() {
 
       <main className="flex-1">
         <HeroSection />
+        <Marquee />
         <AboutSection />
         <FeaturesSection />
+        <Marquee />
         <TeamSection />
         <PricingSection />
+        <Marquee />
         <BookingSection />
       </main>
 
