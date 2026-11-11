@@ -116,12 +116,15 @@ export function MissionHUD() {
               onClick={() => jump(p.id)}
               aria-label={`Lompat ke bagian ${p.label}`}
               aria-current={i === activeIndex ? "true" : undefined}
-              className="group relative z-10 my-2 flex h-3.5 w-3.5 items-center justify-center rounded-full border transition-colors"
-              style={{
-                borderColor: i <= activeIndex ? "var(--ice)" : "rgba(255,255,255,0.2)",
-                background: i === activeIndex ? "var(--ice)" : "#0a0f1c",
-              }}
+              className="group relative z-10 my-1 flex h-7 w-7 items-center justify-center rounded-full transition-colors"
             >
+              <span
+                className="flex h-3.5 w-3.5 items-center justify-center rounded-full border"
+                style={{
+                  borderColor: i <= activeIndex ? "var(--ice)" : "rgba(255,255,255,0.2)",
+                  background: i === activeIndex ? "var(--ice)" : "#0a0f1c",
+                }}
+              />
               <span className="font-hud pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 whitespace-nowrap text-[9px] text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 {p.label}
               </span>

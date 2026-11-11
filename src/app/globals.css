@@ -118,6 +118,24 @@
   html.lenis-active {
     scroll-behavior: auto;
   }
+  /* Skip link aksesibilitas — muncul hanya saat fokus keyboard */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 300;
+    transform: translateY(-200%);
+    transition: transform 0.25s ease;
+  }
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+  /* Fokus keyboard terlihat jelas di seluruh komponen kustom */
+  :focus-visible {
+    outline: 2px solid var(--ice);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
   /* Intro: keputusan pra-hidrasi */
   html.intro-pending body {
     overflow: hidden; /* scroll terkunci selama intro */

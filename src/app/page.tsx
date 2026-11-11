@@ -19,6 +19,14 @@ import { SuccessDialog } from "@/components/spacex/SuccessDialog";
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
+      {/* Skip link aksesibilitas */}
+      <a
+        href="#beranda"
+        className="skip-link glass rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-foreground"
+      >
+        Lewati ke konten utama
+      </a>
+
       {/* Latar gradasi angkasa global */}
       <div
         aria-hidden="true"

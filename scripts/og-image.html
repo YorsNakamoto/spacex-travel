@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Inter:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; }
+  body { width: 1200px; height: 630px; background: #05070D; font-family: 'Sora', sans-serif; overflow: hidden; position: relative; }
+  .stars { position: absolute; inset: 0; }
+  .s { position: absolute; background: #eaf2ff; border-radius: 50%; }
+  .glow { position: absolute; width: 720px; height: 720px; right: -180px; top: -160px;
+    background: radial-gradient(circle, rgba(56,116,166,0.22), transparent 62%); }
+  .moon { position: absolute; right: 70px; top: 150px; width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle at 36% 30%, #dfe9f5, #b8c6d8 45%, #7c8ba6 72%, #4d5a75);
+    box-shadow: 0 0 90px 22px rgba(226,234,248,0.28), inset -26px -14px 60px rgba(5,7,13,0.5); }
+  .crater { position: absolute; border-radius: 50%; background: rgba(120,133,155,0.55); }
+  .c1 { width: 34px; height: 34px; left: 34%; top: 42%; } .c2 { width: 22px; height: 22px; left: 58%; top: 60%; }
+  .c3 { width: 16px; height: 16px; left: 44%; top: 66%; } .c4 { width: 18px; height: 18px; left: 66%; top: 34%; }
+  .content { position: absolute; left: 72px; top: 120px; max-width: 640px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 999px; padding: 8px 18px; color: #AEB7C7; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #4ADE80; }
+  h1 { color: #F4F6FA; font-size: 76px; font-weight: 800; line-height: 1.06; letter-spacing: -0.02em; margin-top: 26px; }
+  .accent { font-family: 'Sora'; font-style: italic; font-weight: 400;
+    background: linear-gradient(100deg, #e8c27a, #f6f0e4 40%, #e8c27a 70%, #b9c9dd);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { color: #AEB7C7; font-size: 20px; margin-top: 22px; line-height: 1.6; font-family: 'Inter', sans-serif; }
+  .sub b { color: #F4F6FA; font-weight: 600; }
+  .sub .gold { color: #E8C27A; font-weight: 600; }
+  .badges { position: absolute; left: 72px; bottom: 64px; display: flex; gap: 12px; }
+  .badge { border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); border-radius: 999px;
+    padding: 10px 20px; color: #AEB7C7; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .wordmark { position: absolute; right: 72px; bottom: 58px; color: #F4F6FA; font-size: 22px; font-weight: 700; letter-spacing: 0.34em; }
+  .rocketline { position: absolute; left: 72px; top: 62px; width: 300px; height: 2px;
+    background: linear-gradient(90deg, #7dd3fc, transparent); }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="stars" id="st"></div>
+  <div class="rocketline"></div>
+  <div class="moon">
+    <span class="crater c1"></span><span class="crater c2"></span><span class="crater c3"></span><span class="crater c4"></span>
+  </div>
+  <div class="content">
+    <span class="eyebrow"><span class="dot"></span> Jasa Travel ke Bulan</span>
+    <h1>Perjalanan ke <span class="accent">Bulan</span><br>dimulai di sini.</h1>
+    <p class="sub">Roket <b>SpaceX Z1150</b> dan <b class="gold">SpaceX Special 000</b>.<br>384.400 km · 12 misi berhasil · 0 insiden.</p>
+  </div>
+  <div class="badges">
+    <span class="badge">Z1150</span><span class="badge">Special 000</span><span class="badge">0 Insiden</span>
+  </div>
+  <p class="wordmark">SPACEX</p>
+  <script>
+    const c = document.getElementById('st');
+    let s = 42; const rnd = () => (s = (s * 1664525 + 1013904223) % 4294967296) / 4294967296;
+    for (let i = 0; i < 90; i++) { const d = document.createElement('span'); d.className = 's';
+      const r = 0.8 + rnd() * 1.8; d.style.cssText = `left:${rnd()*100}%;top:${rnd()*100}%;width:${r}px;height:${r}px;opacity:${0.3+rnd()*0.6}`;
+      c.appendChild(d); }
+  </script>
+</body>
+</html>

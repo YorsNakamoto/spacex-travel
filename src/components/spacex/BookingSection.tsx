@@ -449,7 +449,7 @@ export function BookingSection() {
                               onClick={() => field.onChange(String(Math.max(1, n - 1)))}
                               disabled={n <= 1}
                               aria-label="Kurangi penumpang"
-                              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-muted-foreground transition-colors hover:border-[var(--accent-active)]/40 hover:text-foreground disabled:opacity-40"
+                              className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-muted-foreground transition-colors hover:border-[var(--accent-active)]/40 hover:text-foreground disabled:opacity-40"
                             >
                               <Minus className="h-4 w-4" aria-hidden="true" />
                             </button>
@@ -464,7 +464,7 @@ export function BookingSection() {
                               onClick={() => field.onChange(String(Math.min(4, n + 1)))}
                               disabled={n >= 4}
                               aria-label="Tambah penumpang"
-                              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-muted-foreground transition-colors hover:border-[var(--accent-active)]/40 hover:text-foreground disabled:opacity-40"
+                              className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-muted-foreground transition-colors hover:border-[var(--accent-active)]/40 hover:text-foreground disabled:opacity-40"
                             >
                               <Plus className="h-4 w-4" aria-hidden="true" />
                             </button>

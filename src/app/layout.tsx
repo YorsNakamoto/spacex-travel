@@ -47,6 +47,21 @@ export const metadata: Metadata = {
     siteName: "SpaceX",
     type: "website",
     locale: "id_ID",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SpaceX — Perjalanan ke Bulan dimulai di sini",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SpaceX — Jasa Travel ke Bulan",
+    description:
+      "Perjalanan luar angkasa ke Bulan dengan roket SpaceX Z1150 dan SpaceX Special 000. Pesan sekarang!",
+    images: ["/og-image.png"],
   },
 };
 
